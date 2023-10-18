@@ -1,0 +1,12 @@
+---
+- name: Provision Slave
+  hosts: all
+  tasks:
+    - name: Copy and execute script for deploying LAMP/Laravel application
+      copy:
+        src: automate_laravel_deployment.sh
+        dest: /tmp/automate_laravel_deployment.sh
+        mode: 0755
+    
+    - name: Execute the Bash script
+      command: /tmp/automate_laravel_deployment.sh

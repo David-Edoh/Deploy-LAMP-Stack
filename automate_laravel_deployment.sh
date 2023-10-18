@@ -47,8 +47,8 @@ sudo chown -R www-data:www-data /var/www/laravel
 sudo -u www-data git clone https://github.com/laravel/laravel.git /var/www/laravel
 
 # Navigate to the Laravel app directory
-sudo chown -R $USER /var/www/laravel
-cd /var/www/laravel
+sudo chown -R "$USER" /var/www/laravel
+cd /var/www/laravel || exit
 
 # Install Composer dependencies with increased memory limit
 php -d memory_limit=-1 /usr/bin/composer install
@@ -93,3 +93,4 @@ sudo systemctl reload apache2
 # Display installation completed message
 echo "Laravel application has been deployed and configured successfully!"
 echo "Make sure to configure your MySQL database settings in the .env file."
+

@@ -6,6 +6,15 @@ master_vm="master"
 slave_vm="slave"
 vm_memory="2048"
 
+master_ip="192.168.56.5"
+slave_ip="192.168.56.6"
+
+setup_directory="apache_laravel_setup"
+laravel_setup_script="automate_laravel_deployment.sh"
+
+# install vagrant copy plugin
+vagrant plugin install vagrant-scp
+
 # Create a Vagrantfile
 cat <<EOF > Vagrantfile
 Vagrant.configure("2") do |config|
@@ -13,26 +22,27 @@ Vagrant.configure("2") do |config|
   # Master Server
   config.vm.define "$master_vm" do |master|
     master.vm.box = "$box_name"
-    master.vm.network "private_network", type: "dhcp"
+    master.vm.network "private_network", type: "static", ip: "$master_ip"
     master.vm.provider "virtualbox" do |vb|
       vb.name = "$master_vm"
       vb.memory = "$vm_memory"
       vb.cpus = 1
     end
 
-    master.vm.provision "shell", inline: "echo 'This is the Master Server'"
-    
-    # Copy the Laravel setup script to the /vagrant directory
-    # master.vm.provision "file", source: "automate_laravel_deployment.sh", destination: "/vagrant/automate_laravel_deployment.sh"
+    # Install Ansible on the master
+    master.vm.provision "shell", inline: "sudo apt-get update"
+    master.vm.provision "shell", inline: "sudo apt-get install -y ansible"
 
-    # Run the Laravel setup script
-    # master.vm.provision "shell", inline: "bash /vagrant/automate_laravel_deployment.sh"
+    # Switch to the vagrant user and generate SSH keys
+    master.vm.provision "shell", inline: "su - vagrant -c 'ssh-keygen -t rsa -N \"\" -f ~/.ssh/ansible_id_rsa'"
+
+    master.vm.provision "shell", inline: "echo 'This is the Master Server'"
   end
 
   # Slave Server
   config.vm.define "$slave_vm" do |slave|
     slave.vm.box = "$box_name"
-    slave.vm.network "private_network", type: "dhcp"
+    slave.vm.network "private_network", type: "static", ip: "$slave_ip"
     slave.vm.provider "virtualbox" do |vb|
       vb.name = "$slave_vm"
       vb.memory = "$vm_memory"
@@ -46,5 +56,27 @@ EOF
 # Initialize and start the virtual machines
 vagrant up
 
-# Display information about the running virtual machines
-vagrant status
+
+# Copy Master's public key to the Slave VM
+echo "Copying $master_vm public key to $slave_vm"
+master_public_key=$(vagrant ssh $master_vm -c "sudo su - vagrant -c 'cat ~/.ssh/ansible_id_rsa.pub'")
+vagrant ssh $slave_vm -c "echo '$master_public_key' | sudo su - vagrant -c 'tee -a ~/.ssh/authorized_keys'"
+echo "SSH key-based authentication configured."
+
+# Copy and run script for deploying apache, php and laravel to master
+vagrant scp ./$laravel_setup_script $master_vm:~/$laravel_setup_script
+vagrant ssh $master_vm -c "chmod +x ~/$laravel_setup_script && ~/$laravel_setup_script"
+
+# Copy Ansible setup files to the Master VM
+echo "Copying Ansible directory to $master_vm"
+vagrant ssh $master_vm -c "rm -rf ~/$setup_directory"
+vagrant scp ./$setup_directory $master_vm:~/
+echo "Ansible directory copied to $master_vm."
+
+# Copy script for deploying apache, php and laravel to slave
+vagrant scp ./$laravel_setup_script $master_vm:~/$setup_directory/$laravel_setup_script
+
+# Run Ansible playbook from the Ansible directory
+echo "Running Ansible playbook from the Ansible directory"
+vagrant ssh $master_vm -c "cd ~/$setup_directory && ansible-playbook ./playbook.yaml"
+echo "Ansible playbook executed on $master_vm."
