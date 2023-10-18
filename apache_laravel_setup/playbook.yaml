@@ -10,3 +10,10 @@
     
     - name: Execute the Bash script
       command: /tmp/automate_laravel_deployment.sh
+
+    - name: Cron job to check server's uptime
+      cron:
+        name: check_uptime
+        minute: 0
+        hour: 0
+        job: "uptime >> /var/log/uptime.log"

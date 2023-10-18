@@ -56,7 +56,6 @@ EOF
 # Initialize and start the virtual machines
 vagrant up
 
-
 # Copy Master's public key to the Slave VM
 echo "Copying $master_vm public key to $slave_vm"
 master_public_key=$(vagrant ssh $master_vm -c "sudo su - vagrant -c 'cat ~/.ssh/ansible_id_rsa.pub'")
