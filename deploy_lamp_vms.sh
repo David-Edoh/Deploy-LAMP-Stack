@@ -56,6 +56,14 @@ EOF
 # Initialize and start the virtual machines
 vagrant up
 
+# Check if all VMs are up and running else exit....
+if [ "$(vagrant status | grep -c 'running')" -ne 2 ]; then
+    echo "Error: Not all VMs are running."
+    echo "Error may be due to dhcp clash or Host's BIOS vtx settings"
+    echo "Exiting...."
+    exit 1
+fi
+
 # Copy Master's public key to the Slave VM
 echo "Copying $master_vm public key to $slave_vm"
 master_public_key=$(vagrant ssh $master_vm -c "sudo su - vagrant -c 'cat ~/.ssh/ansible_id_rsa.pub'")
