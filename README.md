@@ -24,7 +24,7 @@ Before using these automation scripts, make sure you have the following software
     chmod +x deploy_lamp_stack.sh && ./deploy_lamp_stack.sh
     ```
 
-4. The Laravel application will be deployed on the master and slave VM, and the server's uptime will be logged daily at midnight.
+3. The Laravel application will be deployed on the master and slave VM, and the server's uptime will be logged daily at midnight.
 
 ![access_app](https://github.com/David-Edoh/Deploy-LAMP-Stack/assets/45123163/5aff2bdd-4ad5-4735-b4e4-f7539bf851c2)
 
