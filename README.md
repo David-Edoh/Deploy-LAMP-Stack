@@ -50,6 +50,13 @@ The Ansible playbook (`playbook.yaml`) is used to set up LAMP and deploy the Lar
 - Executes the script on the slave VM.
 - Sets up a cron job to check the server's uptime daily at midnight and logs the result.
 
+## Accessing the Laravel Application
+
+Once the deployment is complete, you can access the Laravel application using the following URLs:
+
+- Master VM: http://192.168.56.5/
+- Slave VM: http://192.168.56.6/
+
 ## Troubleshooting
 
 If you encounter issues during the deployment process, you can:
