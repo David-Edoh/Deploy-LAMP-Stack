@@ -2,18 +2,18 @@
 - name: Provision Slave
   hosts: all
   tasks:
-    - name: Copy and execute script for deploying LAMP/Laravel application
+    - name: Copy script for setting up LAMP/Laravel application into the slave VM
       copy:
         src: automate_laravel_deployment.sh
         dest: /tmp/automate_laravel_deployment.sh
         mode: 0755
     
-    - name: Execute the Bash script
+    - name: Executing script for setting up LAMP/Laravel application on the slave VM [This may take a while]
       command: /tmp/automate_laravel_deployment.sh
 
-    - name: Cron job to check server's uptime
+    - name: Cron job to check server's uptime at 12AM daily
       cron:
         name: check_uptime
-        minute: 0
-        hour: 0
+        minute: "0"
+        hour: "0"
         job: "uptime >> /var/log/uptime.log"

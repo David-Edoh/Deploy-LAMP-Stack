@@ -76,6 +76,16 @@ echo "Ansible directory copied to $master_vm."
 vagrant scp ./$laravel_setup_script $master_vm:~/$setup_directory/$laravel_setup_script
 
 # Run Ansible playbook from the Ansible directory
-echo "Running Ansible playbook from the Ansible directory"
+echo -e "\nRunning Ansible playbook To set up LAMP/LLARAVEL on the slave VM"
 vagrant ssh $master_vm -c "cd ~/$setup_directory && ansible-playbook ./playbook.yaml"
-echo "Ansible playbook executed on $master_vm."
+
+GREEN=$(tput setaf 2)
+echo -e "${GREEN}""
+###############################################
+#           Deployment Successful             #
+############################################### \n"
+
+echo "Laravel app details"
+echo "Visit: http://$master_ip/ to test the Laravel deployment on Master VM"
+echo "Visit: http://$slave_ip/ to test the Laravel deployment on Slave VM"
+

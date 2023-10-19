@@ -90,6 +90,9 @@ sudo a2dissite 000-default
 # Reload Apache to apply changes
 sudo systemctl reload apache2
 
+# migrate database and tables
+php artisan migrate
+
 # Display installation completed message
 echo "Laravel application has been deployed and configured successfully!"
 echo "Make sure to configure your MySQL database settings in the .env file."
