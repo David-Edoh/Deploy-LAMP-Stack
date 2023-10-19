@@ -4,12 +4,12 @@
   tasks:
     - name: Copy script for setting up LAMP/Laravel application into the slave VM
       copy:
-        src: automate_laravel_deployment.sh
-        dest: /tmp/automate_laravel_deployment.sh
+        src: setup_laravel_lamp.sh
+        dest: /tmp/setup_laravel_lamp.sh
         mode: 0755
     
     - name: Executing script for setting up LAMP/Laravel application on the slave VM [This may take a while]
-      command: /tmp/automate_laravel_deployment.sh
+      command: /tmp/setup_laravel_lamp.sh
 
     - name: Cron job to check server's uptime at 12AM daily
       cron:

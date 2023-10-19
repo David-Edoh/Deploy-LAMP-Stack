@@ -2,7 +2,7 @@
 <img src="https://github.com/David-Edoh/Deploy-LAMP-Stack/assets/45123163/0034445c-967c-4603-832a-77ab028a4ea2" align="center" height="300" width="450" >
 
 This repository contains bash scripts and an Ansible playbook to automate the deployment of a Laravel application with LAMP stack on two virtual machines, a master, and a slave VM using Vagrant, VirtualBox, and Ansible.
-The script will create and configure the two VMs using Vagrant, set up SSH key-based authentication, and execute the `automate_laravel_deployment.sh` script to setup Laravel and LAMP stack on the master node. The script also uses Ansible on the master VM to setup Laravel and LAMP stack on the slave VM by copying the `automate_laravel_deployment.sh` script to the slave and executing it.
+The script will create and configure the two VMs using Vagrant, set up SSH key-based authentication, and execute the `setup_laravel_lamp.sh` script to setup Laravel and LAMP stack on the master node. The script also uses Ansible on the master VM to setup Laravel and LAMP stack on the slave VM by copying the `setup_laravel_lamp.sh` script to the slave and executing it.
 ## Prerequisites
 
 Before using these automation scripts, make sure you have the following software installed on your local machine:
@@ -21,7 +21,7 @@ Before using these automation scripts, make sure you have the following software
 2. Run the deployment script to set up the master and slave VMs:
 
     ```bash
-    chmod +x deploy_lamp_stack.sh && ./deploy_lamp_stack.sh
+    chmod +x deploy_lamp_vms.sh && ./deploy_lamp_vms.sh
     ```
 
 3. The Laravel application will be deployed on the master and slave VM, and the server's uptime will be logged daily at midnight.
@@ -39,7 +39,7 @@ Once the deployment is complete, you can access the Laravel application using th
 ![slave_proof](https://github.com/David-Edoh/Deploy-LAMP-Stack/assets/45123163/a1090b8b-eaa3-435c-aad6-54acd3459513)
 
 ## Scripts/Playbook Information
-1. `automate_laravel_deployment.sh`
+1. `setup_laravel_lamp.sh`
 
     This script automates the deployment of a Laravel application on a virtual machine. Here's what it does:
     
@@ -58,7 +58,7 @@ Once the deployment is complete, you can access the Laravel application using th
 
     The Ansible playbook (`playbook.yaml`) is used to set up LAMP and deploy the Laravel application on the slave VM. Here's what it does:
     
-    - Copies the `automate_laravel_deployment.sh` script to the slave VM.
+    - Copies the `setup_laravel_lamp.sh` script to the slave VM.
     - Executes the script on the slave VM.
     - Sets up a cron job to check the server's uptime daily at midnight and logs the result.
 
@@ -67,7 +67,7 @@ Once the deployment is complete, you can access the Laravel application using th
 If you encounter issues during the deployment process, you can:
 - To stop and destroy the VMs, run `vagrant destroy`
 - Check the log files created during the deployment for errors.
-- Inspect the `automate_laravel_deployment.sh` script for any issues.
+- Inspect the `setup_laravel_lamp.sh` script for any issues.
 
 ## Conclusion
 

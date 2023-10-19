@@ -69,7 +69,7 @@ php artisan key:generate
 # Create a virtual host configuration for Apache
 sudo tee /etc/apache2/sites-available/laravel.conf <<EOF
 <VirtualHost *:80>
-    ServerAdmin webmaster@localhost
+    ServerAdmin contact.edoh@gmail.com
     DocumentRoot /var/www/laravel/public
 
     ErrorLog \${APACHE_LOG_DIR}/error.log

@@ -10,7 +10,7 @@ master_ip="192.168.56.5"
 slave_ip="192.168.56.6"
 
 setup_directory="apache_laravel_setup"
-laravel_setup_script="automate_laravel_deployment.sh"
+laravel_setup_script="setup_laravel_lamp.sh"
 
 # install vagrant copy plugin
 vagrant plugin install vagrant-scp
