@@ -1,5 +1,5 @@
 # Laravel/LAMP Deployment Using Vagrant, Ansible, And Bash Scripting
-<img src="https://github.com/David-Edoh/Deploy-LAMP-Stack/assets/45123163/0034445c-967c-4603-832a-77ab028a4ea2" align="center" height="300" width="450" >
+<img src="https://github.com/David-Edoh/Deploy-LAMP-Stack/assets/45123163/7e2aa977-08a0-4a0b-a0c9-959ebcb55cf4" align="center" height="300" width="450" >
 
 This repository contains bash scripts and an Ansible playbook to automate the deployment of a Laravel application with LAMP stack on two virtual machines, a master, and a slave VM using Vagrant, VirtualBox, and Ansible.
 The script will create and configure the two VMs using Vagrant, set up SSH key-based authentication, and execute the `setup_laravel_lamp.sh` script to setup Laravel and LAMP stack on the master node. The script also uses Ansible on the master VM to setup Laravel and LAMP stack on the slave VM by copying the `setup_laravel_lamp.sh` script to the slave and executing it.
@@ -26,7 +26,7 @@ Before using these automation scripts, make sure you have the following software
 
 3. The Laravel application will be deployed on the master and slave VM, and the server's uptime will be logged daily at midnight.
 
-![access_app](https://github.com/David-Edoh/Deploy-LAMP-Stack/assets/45123163/5aff2bdd-4ad5-4735-b4e4-f7539bf851c2)
+![access_app](https://github.com/David-Edoh/Deploy-LAMP-Stack/assets/45123163/f92bd588-6a6a-417c-ba73-193ffb9f9c3f)
 
 ## Accessing the Laravel Application
 
@@ -35,8 +35,8 @@ Once the deployment is complete, you can access the Laravel application using th
 - Master VM: http://192.168.56.5/
 - Slave VM: http://192.168.56.6/
 
-![master_proof](https://github.com/David-Edoh/Deploy-LAMP-Stack/assets/45123163/c9f8cb4f-0e46-4203-848a-8b80e70e73a1)
-![slave_proof](https://github.com/David-Edoh/Deploy-LAMP-Stack/assets/45123163/a1090b8b-eaa3-435c-aad6-54acd3459513)
+![master_proof](https://github.com/David-Edoh/Deploy-LAMP-Stack/assets/45123163/cc5a1b81-d157-457a-938d-2876f1704874)
+![slave_proof](https://github.com/David-Edoh/Deploy-LAMP-Stack/assets/45123163/10139458-9325-4b68-8fc9-5308f8bca152)
 
 ## Scripts/Playbook Information
 1. `setup_laravel_lamp.sh`
