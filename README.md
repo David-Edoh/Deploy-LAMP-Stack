@@ -1,4 +1,4 @@
-# Laravel/LAMP Deployment Automation Using Vagrant, Ansible And Bash Scripting
+# Laravel/LAMP Deployment Automation Using Vagrant, Ansible, And Bash Scripting
 <img src="https://github.com/David-Edoh/Deploy-LAMP-Stack/assets/45123163/0034445c-967c-4603-832a-77ab028a4ea2" align="center" height="300" width="450" >
 
 This repository contains bash scripts and an Ansible playbook to automate the deployment of a Laravel application with LAMP stack on two virtual machines, a master, and a slave VM using Vagrant, VirtualBox, and Ansible.
