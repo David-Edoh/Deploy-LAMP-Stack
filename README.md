@@ -24,7 +24,7 @@ Before using these automation scripts, make sure you have the following software
     chmod +x deploy_lamp_stack.sh && ./deploy_lamp_stack.sh
     ```
 
-3. The script will create and configure two VMs using Vagrant, set up SSH key-based authentication, and execute the `automate_laravel_deployment.sh` script on the master and slave VM.
+3. The script will create and configure two VMs using Vagrant, set up SSH key-based authentication, and execute the `automate_laravel_deployment.sh` script on the master node. The script also uses ansible on the master VM to setup Laravel and LAMP stack on the slave VM.
 
 4. The Laravel application will be deployed on the master and slave VM, and the server's uptime will be logged daily at midnight.
 
