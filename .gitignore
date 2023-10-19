@@ -27,3 +27,6 @@ Vagrantfile
 # Ignore local configuration files
 .vagrantup.local
 .vagrantup.yaml
+
+# Ignore .log files
+*.log
