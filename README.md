@@ -1,8 +1,8 @@
-# Laravel/LAMP Deployment Automation Using Vagrant, Ansible, And Bash Scripting
+# Laravel/LAMP Deployment Using Vagrant, Ansible, And Bash Scripting
 <img src="https://github.com/David-Edoh/Deploy-LAMP-Stack/assets/45123163/0034445c-967c-4603-832a-77ab028a4ea2" align="center" height="300" width="450" >
 
 This repository contains bash scripts and an Ansible playbook to automate the deployment of a Laravel application with LAMP stack on two virtual machines, a master, and a slave VM using Vagrant, VirtualBox, and Ansible.
-
+The script will create and configure the two VMs using Vagrant, set up SSH key-based authentication, and execute the `automate_laravel_deployment.sh` script to setup Laravel and LAMP stack on the master node. The script also uses Ansible on the master VM to setup Laravel and LAMP stack on the slave VM by copying the `automate_laravel_deployment.sh` script to the slave and executing it.
 ## Prerequisites
 
 Before using these automation scripts, make sure you have the following software installed on your local machine:
@@ -23,8 +23,6 @@ Before using these automation scripts, make sure you have the following software
     ```bash
     chmod +x deploy_lamp_stack.sh && ./deploy_lamp_stack.sh
     ```
-
-3. The script will create and configure two VMs using Vagrant, set up SSH key-based authentication, and execute the `automate_laravel_deployment.sh` script to setup Laravel and LAMP stack on the master node. The script also uses Ansible on the master VM to setup Laravel and LAMP stack on the slave VM by copying the `automate_laravel_deployment.sh` script to the slave and executing it.
 
 4. The Laravel application will be deployed on the master and slave VM, and the server's uptime will be logged daily at midnight.
 
