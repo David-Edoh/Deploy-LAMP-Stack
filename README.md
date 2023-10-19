@@ -72,7 +72,7 @@ If you encounter issues during the deployment process, you can:
 
 ## Conclusion
 
-This repository provides a set of automation scripts to simplify the deployment of a Laravel application on multiple virtual machines. The use of Vagrant and Ansible ensures a consistent and reproducible deployment process.
+This repository provides a set of automation scripts to simplify the deployment of a Laravel application on multiple virtual machines with LAMP stack installed and configured. The use of Vagrant and Ansible ensures a consistent and reproducible deployment process.
 
 For more information on Vagrant and Ansible, consult their documentation:
 
