@@ -24,6 +24,9 @@ Vagrant.configure("2") do |config|
     master.vm.box = "$box_name"
     master.vm.network "private_network", type: "static", ip: "$master_ip"
     master.vm.provider "virtualbox" do |vb|
+      vb.customize ["modifyvm", :id, "--cableconnected1", "on"]
+      vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
+      vb.customize ["modifyvm", :id, "--uartmode1", "file", File::NULL]
       vb.name = "$master_vm"
       vb.memory = "$vm_memory"
       vb.cpus = 1
@@ -44,6 +47,9 @@ Vagrant.configure("2") do |config|
     slave.vm.box = "$box_name"
     slave.vm.network "private_network", type: "static", ip: "$slave_ip"
     slave.vm.provider "virtualbox" do |vb|
+      vb.customize ["modifyvm", :id, "--cableconnected1", "on"]
+      vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
+      vb.customize ["modifyvm", :id, "--uartmode1", "file", File::NULL]
       vb.name = "$slave_vm"
       vb.memory = "$vm_memory"
       vb.cpus = 1
