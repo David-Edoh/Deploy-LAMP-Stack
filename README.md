@@ -38,6 +38,11 @@ Once the deployment is complete, you can access the Laravel application using th
 ![master_proof](https://github.com/David-Edoh/Deploy-LAMP-Stack/assets/45123163/cc5a1b81-d157-457a-938d-2876f1704874)
 ![slave_proof](https://github.com/David-Edoh/Deploy-LAMP-Stack/assets/45123163/10139458-9325-4b68-8fc9-5308f8bca152)
 
+## Database setup
+The Application's database and tables would be created and the relevent migrations done by the script.
+
+![Screenshot from 2023-10-20 04-53-51](https://github.com/David-Edoh/Deploy-LAMP-Stack/assets/45123163/921aa5d3-272e-4bdc-91c8-b384499f18e0)
+
 ## Scripts/Playbook Information
 1. `setup_laravel_lamp.sh`
 
