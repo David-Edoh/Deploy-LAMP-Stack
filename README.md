@@ -65,9 +65,12 @@ Once the deployment is complete, you can access the Laravel application using th
 ## Troubleshooting
 
 If you encounter issues during the deployment process, you can:
-- To stop and destroy the VMs, run `vagrant destroy`
+- Verify that both master and slave VMs are running.
+  ![Screenshot from 2023-10-20 04-22-10](https://github.com/David-Edoh/Deploy-LAMP-Stack/assets/45123163/b8d00ab4-df31-4c49-be0e-7f015bcf5a9c)
+
 - Check the log files created during the deployment for errors.
-- Inspect the `setup_laravel_lamp.sh` script for any issues.
+- Inspect the `setup_laravel_lamp.sh` script for any configuration issues.
+- To stop and destroy the VMs, run `vagrant destroy`
 
 ## Conclusion
 
